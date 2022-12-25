@@ -6,5 +6,5 @@ A program that implements a simple spelling checker. The two data structures use
 **Group Members:** <br />
 Ahmad Farid Sukhera (2021059)<br />
 Hamza Zuberi (2021193)<br />
-Sameer Ahmad (2021)<br />
+Muhammad Sameer Shahzad  (2021451)<br />
 Mahnoor Amir (2021276) <br />
