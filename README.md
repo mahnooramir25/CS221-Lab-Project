@@ -4,7 +4,7 @@ A program that implements a simple spelling checker. The two data structures use
 **University:** Ghulam Ishaq Khan Institute of Engineering Sciences and Technology<br />
 **Instructor:** Sir Usama Janjua<br />
 **Group Members:** <br />
+Muhammad Sameer Shahzad  (2021451)<br />
 Ahmad Farid Sukhera (2021059)<br />
 Hamza Zuberi (2021193)<br />
-Muhammad Sameer Shahzad  (2021451)<br />
 Mahnoor Amir (2021276) <br />
