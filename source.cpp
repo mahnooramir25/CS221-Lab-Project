@@ -9,7 +9,7 @@ const int alphabets = 26;
 
 class List
 {
-    struct Node
+    struct Node    //creating structure for node of list
     {
         string data;
         Node* next;
@@ -19,20 +19,19 @@ class List
 public:
     List()
     {
-        headptr = NULL;
+        headptr = NULL;   //headpointer set to null
     }
 
     void addNodeAtEnd(string value)
     {
-        Node* temp = new Node();
-        temp->data = value;
+        Node* temp = new Node();  //create new node
+        temp->data = value;       //set the value
         temp->next = NULL;
         if (headptr == NULL)
         {
             headptr = temp;
             return;
         }
-
         Node* temp2 = headptr;
         while (temp2->next != NULL)
         {
@@ -46,11 +45,11 @@ public:
         headptr = temp->next;
         delete temp;
     }
-    void printList()
+    void printList()     
     {
         Node* temp = headptr;
         cout << "The list of incorrect words is : ";
-        while (temp != NULL)
+        while (temp != NULL) 
         {
             if (temp->next == NULL)
                 cout << temp->data;
@@ -83,9 +82,9 @@ public:
 struct trienode
 {
 
-    trienode* children[alphabets];
-
-    bool isendofword;
+    trienode* children[alphabets]; //to create a trie for 26 alphabets
+    
+    bool isendofword;             // isendofword is true if the node represents end of a word 
 };
 
 struct trienode* getnode(void)
@@ -115,10 +114,10 @@ void insert(trienode* root, string key)
 
         node = node->children[index];
     }
-    node->isendofword = true;
+    node->isendofword = true;   // mark last node as leaf
 }
 
-bool search(trienode* root, string key)
+bool search(trienode* root, string key)   // Returns true if key presents in trie, else false
 {
     struct trienode* node = root;
 
@@ -142,59 +141,49 @@ int main()
 
     { // Construct trie
         fstream reading;
-        reading.open("listt.txt", ios::in);
+        reading.open("DictionaryList.txt", ios::in); //opens dictionary file
         if (reading.is_open())
         {
             string text;
             while (getline(reading, text))
             {
-                insert(root, text);
+                insert(root, text);          //reads words from dictionary file and inserts it in trie
             }
-            cout << "trie created \n \n"
-                << endl;
+            cout << "TRIE CREATED"<< endl;
         }
     }
 
-    string key;
-
-    // cout << "Enter a string ";
-    // cin >> key;
     fstream getting;
-    getting.open("input.txt", ios::in);
+    getting.open("InputText.txt", ios::in); //opens input file
     if (getting.is_open())
     {
 
-        string key;
+        string key;                         //temporary variable stores each word to be compared with from the list of words stored in trie
 
         while (getline(getting, key, ' '))
         {
-            cout << "key is " << key << endl;
+            cout << "Key is " << key << endl;
             string x;
-            for (int i = 0; i != key.length(); i++)
+            for (int i = 0; i != key.length(); i++) //loop created to move and search for string
             {
 
-                if (key[i] == '.' || key[i] == '/' || key[i] == ',' || key[i] == ':' || key[i] == ';' || key[i] == '-' || key[i] == '_' || key[i] == '!')
+                if (key[i] == '?' || key[i] == '.' || key[i] == '/' || key[i] == ',' || key[i] == ':' || key[i] == ';' || key[i] == '-' || key[i] == '_' || key[i] == '!')
                 {
-                    // nothing happen here
-                }
+                }                    //if punctution marks encountered, ignore them
                 else
                 {
                     x += key[i];
                 }
             }
-
-            if (search(root, x))
+            if (search(root, x)) //if search function returns true
             {
-
                 cout << x << " :: spellings are correct and its a real word" << endl;
-
-                // cout
                 cout << "\n";
             }
             else
             {
                 cout << key << " ::spelling not correct or not a real word" << endl;
-                l1.addNodeAtEnd(key);
+                l1.addNodeAtEnd(key); //adds incorrect word to linked list
                 cout << "Word added to a list of incorrect words." << endl;
                 cout << endl;
             }
