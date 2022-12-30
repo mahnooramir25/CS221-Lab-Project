@@ -154,6 +154,7 @@ int main()
     }
 
     fstream getting;
+    string key;
     getting.open("InputText.txt", ios::in); //opens input file
     if (getting.is_open())
     {
